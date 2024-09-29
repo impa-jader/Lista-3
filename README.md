@@ -205,22 +205,28 @@ class Vector3D(RealVector):
                 return False
         return True
     def __lt__(self,other_vector):
-        if abs(self.coord)< abs(other_vector.coord):
+        if abs(self)< abs(other_vector):
             return True
         else:
             return False
     def __gt__(self,other_vector):
-        if abs(self.coord)>abs(other_vector.coord):
+        if abs(self)>abs(other_vector):
             return True
         else:
             return False
     def __le__(self,other_vector):
-        if abs(self.coord)<= abs(other_vector.coord):
+        if abs(self)<= abs(other_vector):
             return True
         else:
             return False
     def __ge__(self,other_vector):
-        if abs(self.coord)>=abs(other_vector.coord):
+        if abs(self)>=abs(other_vector):
             return True
         else:
             return False
+
+if __name__=="__main__":
+    print(Vector3D([1,3,4])==Vector3D([1,3,4]))
+    print(Vector3D([1,3,4])<Vector3D([8,3,4]))
+    print(Vector3D([1,3,4])>Vector3D([8,3,4]))
+    print(Vector3D([1,3,4])<=Vector3D([1,3,4]))
