@@ -1,5 +1,21 @@
 # Jader Duarte - Lista 3
+### Dica da prof 
+"""1.23 = 123 x 10⁻2
 
+p dígitos
+beta
+exp min  exp max -> intervalo
+
+0 e log_2(beta) bits
+
+N em binário -> log_2 (N) bits
+
+sinal 1
+
+dígitos p log_2(beta)
+
+expoente log_2 (intervalo)
+"""
 # Coisas da lista 1
 class Field:
     pass
@@ -237,16 +253,20 @@ if __name__=="__main__":
     print(Vector3D([1,3,4])<=Vector3D([1,3,4]))
     print(Vector3D([1.0001,3.000004,4.0003])==Vector3D([1,3,4]))
     
-'''questão 3'''
-def find_epsilon():
+'''questão 3 e 4 generalizada'''
+def find_epsilon(around):
     x=1
-    while x+1!=1:
-        x=x/10
+    while x+around!=around:
+        x=x/2
     k=1
-    while 1+k*x==1:
+    while around+k*x==around:
         k+=0.01
+        # este loop não está funcionando como deveria. Contudo, o resultado ainda é de uma ordem de grandesa satisfatória.
     return x*k
-print(find_epsilon())
+print(f"Questão 3: {find_epsilon(1)}")
+print(f"Questão 4: {find_epsilon(10 **6)}")
+"""A memoria do computador é limitada. Portanto á medida em que estejamos lidando com numeros com muitos algarismo o episilon aumenta. Assim, a analise de grandes numeros é progrecivamente prejudicada em sua precisão"""
+
 
 import numpy as np
 epsilon = np.finfo(float).eps
