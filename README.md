@@ -1,6 +1,7 @@
 # Jader Duarte - Lista 3
+# Jader Duarte - Lista 3
 
-# lista 1
+# Coisas da lista 1
 class Field:
     pass
 
@@ -197,30 +198,35 @@ class Vector3D(RealVector):
         for i in range(self._dim):
             r+=self.coord[i]**2
         return r**(1/2)
-    
     # Questão 3
+    # definirei eps como 0.001 porque sim. É um numero aleatorio
     def __eq__(self, other_verctor):
+        eps= 0.001
         for i in range(3):
-            if self.coord[i]!= other_verctor.coord[i]:
+            if abs(self.coord[i] - other_verctor.coord[i])> eps:
                 return False
         return True
     def __lt__(self,other_vector):
-        if abs(self)< abs(other_vector):
+        eps= 0.001
+        if abs(self)-abs(other_vector)< -eps:
             return True
         else:
             return False
     def __gt__(self,other_vector):
-        if abs(self)>abs(other_vector):
+        eps=0.001
+        if abs(self)-abs(other_vector)>eps:
             return True
         else:
             return False
     def __le__(self,other_vector):
-        if abs(self)<= abs(other_vector):
+        if self==other_vector:
+            return True
+        elif self<other_vector:
             return True
         else:
             return False
     def __ge__(self,other_vector):
-        if abs(self)>=abs(other_vector):
+        if not self<other_vector:
             return True
         else:
             return False
@@ -230,3 +236,5 @@ if __name__=="__main__":
     print(Vector3D([1,3,4])<Vector3D([8,3,4]))
     print(Vector3D([1,3,4])>Vector3D([8,3,4]))
     print(Vector3D([1,3,4])<=Vector3D([1,3,4]))
+    print(Vector3D([1.0001,3.000004,4.0003])==Vector3D([1,3,4]))
+    
