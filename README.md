@@ -1,5 +1,4 @@
 # Jader Duarte - Lista 3
-# Jader Duarte - Lista 3
 
 # Coisas da lista 1
 class Field:
@@ -238,3 +237,17 @@ if __name__=="__main__":
     print(Vector3D([1,3,4])<=Vector3D([1,3,4]))
     print(Vector3D([1.0001,3.000004,4.0003])==Vector3D([1,3,4]))
     
+'''questão 3'''
+def find_epsilon():
+    x=1
+    while x+1!=1:
+        x=x/10
+    k=1
+    while 1+k*x==1:
+        k+=0.01
+    return x*k
+print(find_epsilon())
+
+import numpy as np
+epsilon = np.finfo(float).eps
+print(epsilon)
